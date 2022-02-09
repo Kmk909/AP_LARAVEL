@@ -13,6 +13,6 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [HomeController::class, 'home']);
+Route::resource('posts', HomeController::class);
 
 

@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(20)->create();
         
         
-       // $this->call([
+       $this->call([
          //   UserSeeder::class,
-           // PostSeeder::class,
+            PostSeeder::class,
             
-        //]);
+        ]);
     }
 }
