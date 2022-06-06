@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 
 /*
@@ -13,6 +14,8 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Route::get('/',[HomeController::class,'testroot'])->name('root');
 Route::resource('posts', HomeController::class);
+Route::get('logout', [AuthController::class,'logout']);
 
-
+//Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard',[HomeController::class,'index']);

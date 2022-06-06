@@ -2,6 +2,11 @@
 
 @section('content')
   <div class="container">
+    <div>
+    
+      <a href="posts/create" class="btn btn-success">New Post</a>
+      <a href="logout" class="btn btn-danger">Log Out</a>
+    </div><br/>
    <div class="card">
     <h5 class="card-header" style="text-align:center">Contents</h5>
     <div class="card-body">
@@ -9,7 +14,16 @@
         <div>
         <h5 class="card-title">{{$post->name}}</h5>
         <p class="card-text">{{$post->description}}</p>
-        <a href="#" class="btn btn-primary">View</a>
+        <div class="form-row">
+        <a style="height:38px; margin-right:3px" href="\posts\{{$post->id}}" class="btn btn-primary">View</a>
+        <a style="height:38px; margin-right:3px" href="\posts\{{$post->id}}\edit" class="btn btn-warning">Edit</a>
+        <form action="\posts\{{$post->id}}" method="post">
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="btn btn-danger">Delete</button>
+
+        </form>
+        </div>
         </div><br/>
         @endforeach
     
