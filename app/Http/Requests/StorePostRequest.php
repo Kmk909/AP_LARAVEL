@@ -35,9 +35,9 @@ class StorePostRequest extends FormRequest
    {
     return [
         
-        'name.required' => 'A name is required',
-        'description.required' => 'A description is required',
-           
+        'name.required' => 'A name must be added.',
+        'description.required' => 'A description must be added.',
+        'category_id.required' => 'A category must be selected.'       
     ];
 
    }
