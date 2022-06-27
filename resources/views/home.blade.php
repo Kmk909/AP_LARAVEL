@@ -8,6 +8,12 @@
       <a href="logout" class="btn btn-danger">Log Out</a>
       <h4 style="float:right">{{Auth::user()->name}}</h4>
     </div><br/>
+    @if (session('status'))
+    <div class="alert alert-success alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!{{ session('status') }}</strong> 
+    </div>
+    @endif
    <div class="card">
     <h5 class="card-header" style="text-align:center">Contents</h5>
     <div class="card-body">

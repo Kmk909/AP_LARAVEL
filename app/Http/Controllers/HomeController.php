@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use index;
 use App\Models\Post;
+use App\Mail\PostStored;
 use App\Models\Category;
+use App\Mail\PostCreated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Requests\StorePostRequest;
 
@@ -27,6 +31,7 @@ class HomeController extends Controller
     public function index()
     {
         //$data=Post::all();
+        
 
         $data=Post::where('user_id',auth()->id())->orderBy('id','desc')->get();
         return view('home',compact('data'));
@@ -52,7 +57,7 @@ class HomeController extends Controller
     public function store(StorePostRequest $request)
     {
         $validated=$request->validated();
-        Post::create($validated);
+        $post=Post::create($validated + ['user_id'=>Auth::user()->id]);
         //$post = new Post();
         //$post->name = $request->name;
         //$post->description = $request->description;
@@ -63,7 +68,8 @@ class HomeController extends Controller
             //'description'=>$request->description,
             //'category_id'=>$request->category,
         //]);
-        return redirect('posts');
+       
+        return redirect('posts')->with('status', config('aprogrammer.message.created'));
     }
 
     /**
@@ -126,7 +132,8 @@ class HomeController extends Controller
             //'description'=>$request->description,
             //'category_id'=>$request->category_id,
         //]);
-        return redirect('posts');
+        return redirect('posts')->with('status', config('aprogrammer.message.updated'));
+
     }
 
     /**
