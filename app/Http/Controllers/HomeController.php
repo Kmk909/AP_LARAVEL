@@ -145,6 +145,6 @@ class HomeController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect('posts');
+        return redirect('posts')->with('status',config('aprogrammer.message.deleted'));
     }
 }
