@@ -19,8 +19,8 @@ use App\Http\Controllers\HomeController;
 */
 Route::get('/',function(){
     
-    dd(TestFacade::execute());
-    
+    //dd(TestFacade::execute());
+    return view('welcome');
 });
 Route::resource('posts', HomeController::class);
 Route::get('logout', [AuthController::class,'logout']);
